@@ -1,0 +1,34 @@
+//====================================================================================================
+.footer {
+   background-color: $blackColor;
+   &__container {
+   }
+
+   &__body {
+      @include adaptiveValue("font-size", 16,12);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      @include adaptiveValue("padding-top", 20, 10);
+      @include adaptiveValue("padding-bottom", 20, 10);
+   }
+   &__copy {
+      @media (min-width: $mobile) {
+         margin-right: rem(20);
+      }
+      @media (max-width: $mobile) {
+         margin-bottom: rem(10);
+      }
+   }
+   &__dev {
+      display: flex;
+      align-items: center;
+      p {
+         margin-right: rem(10);
+      }
+   }
+}
+
+//====================================================================================================

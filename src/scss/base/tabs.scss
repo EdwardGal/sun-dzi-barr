@@ -1,0 +1,131 @@
+.tabs {
+	// .tabs__navigation
+	&._tab-spoller {
+		.tabs__title {
+			width: 100%;
+			margin: rem(5) 0;
+		}
+	}
+	&__navigation {
+		@media (min-width: $mobile) {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			background-color: rgba(0, 0, 0, 0.3);
+			backdrop-filter: blur(20px);
+			padding: rem(20);
+			border-radius: rem(5);
+		}
+	}
+	// .tabs__title
+
+	&__title {
+		font-size: rem(14);
+		font-weight: 700;
+		text-align: center;
+		line-height: math.div(18, 12);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		border: 1px solid $mainColor;
+		padding: rem(10) rem(15);
+		border-radius: rem(5);
+		margin: rem(5);
+		background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(20px);
+		&._tab-active {
+			border-color: transparent;
+			color: $blackColor;
+			background-color: $brownColor;
+		}
+	}
+	// .tabs__content
+	&__content {
+		margin-top: rem(30);
+		@media (max-width: $tablet) {
+			text-align: center;
+		}
+		@media (max-width: $mobile) {
+			text-align: center;
+			margin-top: 0;
+		}
+	}
+	// .tabs__body
+	&__body {
+		background-color: rgba(0, 0, 0, 0.3);
+		backdrop-filter: blur(20px);
+		padding: rem(20);
+		border-radius: rem(5);
+	}
+}
+
+.tab {
+	&__content {
+		display: flex;
+		gap: 20px;
+		@media (max-width: $tablet) {
+			flex-direction: column;
+		}
+	}
+
+	&__image {
+		max-width: 320px;
+		width: 100%;
+		@include adaptiveValue("max-width", 330, 200);
+		@include adaptiveValue("max-height", 330, 200);
+		border-radius: 20px;
+		border-radius: rem(5);
+		@media (max-width: $tablet) {
+			margin: 0px auto;
+		}
+	}
+
+	&__info {
+		flex: 0 1 70%;
+	}
+
+	&__title {
+		font-family: Cormorant;
+		@include adaptiveValue("font-size", 40, 30);
+		font-weight: 700;
+		color: $brownColor;
+		margin-bottom: math.div(20, 40) + em;
+		width: 100%;
+	}
+
+	&__subtitle {
+		@include adaptiveValue("font-size", 16, 14);
+		line-height: math.div(21, 16);
+		margin-bottom: math.div(20, 16) + em;
+		@media (max-width: $tablet) {
+			margin: 0px auto math.div(20, 16) + em;
+		}
+	}
+	&__desc-caption,
+	&__desc {
+		@include adaptiveValue("font-size", 18, 12);
+		line-height: math.div(21, 16);
+		&:not(:last-child) {
+			margin-bottom: math.div(5, 16) + em;
+		}
+		&--brown {
+			color: $brownColor;
+		}
+	}
+	&__desc-show {
+		li {
+			line-height: math.div(21, 16);
+			&:not(:last-child) {
+				margin-bottom: math.div(10, 16) + em;
+			}
+		}
+		span {
+			font-family: Cormorant;
+			@include adaptiveValue("font-size", 40, 30);
+			font-weight: 700;
+			color: $brownColor;
+		}
+	}
+	&__desc-btn {
+		margin-top: rem(20);
+	}
+}

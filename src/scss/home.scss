@@ -1,0 +1,327 @@
+.page {
+   &__about,
+   &__works,
+   &__questions,
+   &__contacts,
+   &__delivery > {
+      [class*="__container"] > {
+         [class*="__title"] {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Cormorant;
+            @include adaptiveValue("font-size", 40, 20);
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+            @include adaptiveValue("margin-bottom", 60, 20);
+            &::before,
+            &::after {
+               content: "";
+               height: 30px;
+               width: 90px;
+               margin: 0 5px;
+            }
+            &::before {
+               background: url("@img/plaska-l.png") 0 0 / 100% no-repeat;
+            }
+            &::after {
+               background: url("@img/plaska-r.png") 0 0 / 100% no-repeat;
+            }
+            @media (max-width: $mobile) {
+               &::before,
+               &::after {
+                  height: 20px;
+                  width: 60px;
+               }
+            }
+         }
+      }
+   }
+}
+
+.main {
+   display: flex;
+   background: url("@img/main_bg.png") 0 0 / cover no-repeat;
+   @include adaptiveValue("padding-top", 80, 30);
+   @include adaptiveValue("padding-bottom", 80, 30);
+   &__container {
+      flex: 1 1 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+   }
+
+   &__title {
+      max-width: 600px;
+      padding: rem(20);
+      @include adaptiveValue("font-size", 30, 22);
+      border-radius: rem(5);
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(20px);
+      span {
+         color: $brownColor;
+         font-weight: 700;
+      }
+   }
+}
+//ABOUT========================================================================================================================================================
+
+.about {
+   text-align: center;
+   @include adaptiveValue("padding-top", 160, 30);
+   @include adaptiveValue("padding-bottom", 80, 30);
+   &__body {
+      @include adaptiveValue("font-size", 18, 12);
+      line-height: 150%;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(20px);
+      @include adaptiveValue("padding-top", 30, 15);
+      @include adaptiveValue("padding-bottom", 30, 15);
+      @include adaptiveValue("padding-right", 20, 15);
+      @include adaptiveValue("padding-left", 20, 15);
+      border-radius: rem(5);
+      p {
+         &:not(:last-child) {
+            margin-bottom: math.div(10, 16) + em;
+         }
+      }
+   }
+   &__text-title {
+      @include adaptiveValue("font-size", 30, 18);
+      font-weight: 600;
+   }
+}
+
+//QUESTIONS========================================================================================================================================================
+
+.questions {
+   @include adaptiveValue("padding-top", 80, 30);
+   @include adaptiveValue("padding-bottom", 80, 30);
+}
+
+.spollers {
+   &__body {
+      p {
+         margin-bottom: em(10, 16);
+      }
+   }
+
+   &__list {
+      padding: rem(10) 0px;
+      li {
+         &:not(:last-child) {
+            margin-bottom: em(10, 16);
+         }
+      }
+   }
+}
+
+//WORKS========================================================================================================================================================
+
+.works {
+   @include adaptiveValue("padding-top", 80, 30);
+   @include adaptiveValue("padding-bottom", 80, 30);
+   &__slider {
+      position: relative;
+   }
+   
+   &__image-ibg {
+      padding-bottom: calc((292px / 292px) * 100%);
+      overflow: hidden;
+      border-radius: 5px;
+   }
+}
+
+.arrows-nav {
+   &__arrow-prev,
+   &__arrow-next {
+      position: absolute;
+      top: 42%;
+      z-index: 10;
+      transform: translateY(-42%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include adaptiveValue("height", 60, 35);
+      @include adaptiveValue("width", 60, 25);
+      background-color: $blackColor;
+      transition: all 0.3s ease 0s;
+      svg {
+         fill: $mainColor;
+         @include adaptiveValue("height", 45, 25);
+         @include adaptiveValue("width", 45, 25);
+      }
+      &:first-child {
+         left: 0;
+         border-radius: 0 rem(5) rem(5) 0;
+      }
+      &:last-child {
+         right: 0;
+         border-radius: rem(5) 0 0 rem(5);
+      }
+      @media (min-width: $mobile) {
+         &:hover {
+            background-color: $brownColor;
+            svg {
+               fill: $blackColor;
+            }
+         }
+      }
+   }
+}
+
+.works__wrapper.swiper-wrapper {
+   @media (min-width: $pc) {
+      height: 350px;
+      align-items: center;
+   }
+}
+
+.works__slide.swiper-slide {
+   @media (min-width: 1268px) {
+      flex: 1 0 calc((100% - 80px) / 4);
+      transition: all 0.3s ease 0s;
+   }
+}
+
+.works__pagination {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 24px;
+   @include adaptiveValue("margin-top", 30, 20);
+}
+.swiper-pagination-bullet {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   @include adaptiveValue("width", 14, 10);
+   @include adaptiveValue("height", 14, 10);
+   border-radius: 50%;
+   background-color: $mainColor;
+   opacity: 0.6;
+   margin: 5px;
+   &::before {
+      content: "";
+      transition: all 0.3s ease 0s;
+      border-radius: 50%;
+   }
+}
+.works__pagination .swiper-pagination-bullet-active {
+   background-color: $brownColor;
+   opacity: 1;
+   &::before {
+      content: "";
+      position: absolute;
+      @include adaptiveValue("width", 22, 18);
+      @include adaptiveValue("height", 22, 18);
+      border: 1px solid $brownColor;
+   }
+}
+
+.works__slide.swiper-slide-active {
+   @media (min-width: 1268px) {
+      flex: 1 0 28%;
+      transition: all 0.3s ease 0s;
+   }
+}
+
+//DELIVERY========================================================================================================================================================
+
+.delivery {
+   text-align: center;
+   @include adaptiveValue("padding-top", 80, 30);
+   @include adaptiveValue("padding-bottom", 80, 30);
+   &__image {
+      @include adaptiveValue("max-width", 300, 150);
+      filter: sepia(100%);
+   }
+   &__text {
+      @include adaptiveValue("font-size", 18, 12);
+      line-height: 150%;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(20px);
+      @include adaptiveValue("padding-top", 30, 15);
+      @include adaptiveValue("padding-bottom", 30, 15);
+      @include adaptiveValue("padding-right", 20, 15);
+      @include adaptiveValue("padding-left", 20, 15);
+      border-radius: rem(5);
+      margin-top: rem(20);
+      p {
+         &:not(:last-child) {
+            margin-bottom: math.div(10, 16) + em;
+         }
+      }
+      a {
+         @include adaptiveValue("font-size", 20, 16);
+         font-weight: 700;
+         color: $brownColor;
+         display: inline-block;
+         margin: 0 5px;
+         transition: all 0.3s ease 0s;
+         @media (min-width: $mobile) {
+            &:hover {
+               transform: scale(1.1);
+            }
+         }
+      }
+   }
+}
+
+//========================================================================================================================================================
+
+//CATALOG====================================================================================================
+
+.catalog {
+   display: flex;
+   @include adaptiveValue("padding-top", 180, 100);
+   @include adaptiveValue("padding-bottom", 50, 30);
+   &__container {
+      flex: 1 1 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+   }
+
+   &__caption {
+      text-align: center;
+      text-transform: uppercase;
+      color: $mainColor;
+      @include adaptiveValue("margin-bottom", 30, 20);
+   }
+
+   &__image {
+      max-width: 320px;
+      width: 100%;
+      margin: 0px auto;
+      @include adaptiveValue("max-width", 330, 200);
+      @include adaptiveValue("max-height", 330, 200);
+      border-radius: 20px;
+      border-radius: rem(5);
+   }
+
+   &__title {
+      font-family: Cormorant;
+      font-weight: 700;
+      @include adaptiveValue("font-size", 100, 40);
+      line-height: math.div(121, 100);
+      letter-spacing: 0.02em;
+      margin-bottom: em(30, 100);
+      span {
+         text-align: center;
+         display: block;
+      }
+   }
+
+   &__subtitle {
+      @include adaptiveValue("font-size", 18, 14);
+      color: $brownColor;
+      font-weight: 700;
+      line-height: math.div(21, 16);
+      letter-spacing: 0.04em;
+   }
+}

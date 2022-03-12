@@ -1,0 +1,11 @@
+.btn {
+   font-size: rem(14);
+   border-radius: rem(5);
+   color: $blackColor;
+   line-height: math.div(18, 12);
+   text-transform: uppercase;
+   font-weight: 700;
+   letter-spacing: 0.04em;
+   padding: rem(10) rem(15);
+   background-color: $brownColor;
+}
